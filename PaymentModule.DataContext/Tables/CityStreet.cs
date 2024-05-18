@@ -9,7 +9,9 @@ namespace PaymentModule.DataContext.Tables
     public class CityStreet
     {
         public int Id { get; set; }
-        public City City { get; set; }
-        public Street Street { get; set; }
+        public int CityId { get; set; } 
+        public int StreetId { get; set; }
+        public virtual City City { get; set; }
+        public virtual Street Street { get; set; }
     }
 }

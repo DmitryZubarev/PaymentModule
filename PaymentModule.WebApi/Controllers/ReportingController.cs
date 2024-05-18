@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using PaymentModule.Abstract.Data;
 using PaymentModule.Abstract.Data.Reporting;
 
 namespace PaymentModule.WebApi.Controllers
@@ -16,30 +17,23 @@ namespace PaymentModule.WebApi.Controllers
         }
 
         [HttpPost("[action]")]
-        //[ProducesResponseType(typeof(List<Payment>)), 200]
-        public async Task<IActionResult> GetPayments(
-            DateTime start,
-            DateTime end,
-            int userCode,
-            int sum)
+        //[ProducesResponseType(typeof(List<PaymentModel>)), 200]
+        public async Task<IActionResult> GetPayments(PaymentFilter filter)
         {
+            var result = _reportingService.GetPaymentsData(filter);
             //if smth return BadRequest();
-            return Ok();
+            return Ok(result);
         }
 
         [HttpPost("[action]")]
-        //[ProducesResponseType(typeof(List<Session>)), 200]
-        public async Task<IActionResult> GetSessions(
-            DateTime start,
-            DateTime end,
-            int clientCode,
-            int sum,
-            int tariffId)
+        //[ProducesResponseType(typeof(List<SharingSessionModel>)), 200]
+        public async Task<IActionResult> GetSessions(SharingSessionFilter filter)
         {
+            var result = _reportingService.GetSharingSessionsData(filter);
             //заменить тариф Ид на тариф
 
             //if smth return BadRequest();
-            return Ok();
+            return Ok(result);
         }
     }
 }

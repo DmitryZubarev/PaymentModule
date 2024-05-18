@@ -6,4 +6,9 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PaymentModule.Abstract\PaymentModule.Abstract.csproj" />
+    <ProjectReference Include="..\PaymentModule.DataContext\PaymentModule.DataContext.csproj" />
+  </ItemGroup>
+
 </Project>

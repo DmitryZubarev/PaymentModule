@@ -25,7 +25,7 @@ namespace PaymentModule.WebApi.Controllers
         /// <param name="clientReturnUrl"></param>
         /// <returns></returns>
         [HttpPost("[action]")]
-        public async Task<IActionResult> GetBankForm(
+        public async Task<IActionResult> StartFirstPayment(
             int clientId,
             int tariffId,
             int orderNumber,

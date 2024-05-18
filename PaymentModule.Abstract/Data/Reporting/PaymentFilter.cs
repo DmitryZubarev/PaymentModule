@@ -8,8 +8,8 @@ namespace PaymentModule.Abstract.Data.Reporting
 {
     public class PaymentFilter
     {
-        public int ClientId { get; set; }
-        public int Sum { get; set; }
-        public DateTime Date { get; set; }
+        public int? ClientId { get; set; }
+        public int? Sum { get; set; }
+        public DateTime? Date { get; set; }
     }
 }

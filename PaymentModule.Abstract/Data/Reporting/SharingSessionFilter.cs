@@ -8,10 +8,10 @@ namespace PaymentModule.Abstract.Data.Reporting
 {
     public class SharingSessionFilter
     {
-        public DateTime StartDateTime { get; set; }
-        public DateTime EndDateTime { get; set; }
-        public int ClientId { get; set; }
-        public int Sum { get; set; }
-        public int TariffId { get; set; }
+        public DateTime? StartDateTime { get; set; }
+        public DateTime? EndDateTime { get; set; }
+        public int? ClientId { get; set; }
+        public int? Sum { get; set; }
+        public int? TariffId { get; set; }
     }
 }

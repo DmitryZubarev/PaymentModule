@@ -1,7 +1,15 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using PaymentModule.Abstract.BankClient;
+using PaymentModule.Abstract.BusinessLogic;
+using PaymentModule.Abstract.Data.DataWriter;
+using PaymentModule.Abstract.Data.Reporting;
+using PaymentModule.BankClient;
+using PaymentModule.Core.Services;
 using PaymentModule.DataContext;
+using PaymentModule.DataWriter;
+using PaymentModule.Reporting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,8 +20,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<ApplicationContext>(options => options
-                    .UseNpgsql("Host=localhost;Port=5432;Database=PaymentModule;Username=postgres;Password=postgres"));
-                    
+                    .UseNpgsql("Host=localhost;Port=5432;Database=PaymentModule;Username=postgres;Password=postgres"),
+                    ServiceLifetime.Singleton);
+builder.Services.AddSingleton<IDbWriterService, DataWriterService>();
+builder.Services.AddScoped<IReportingService, ReportingService>();
+builder.Services.AddSingleton<IBankService, BankService>();
+builder.Services.AddSingleton<ISharingSessionService, ActiveSessionService>();
+
 
 var app = builder.Build();
 

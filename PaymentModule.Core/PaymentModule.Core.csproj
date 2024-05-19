@@ -8,11 +8,11 @@
 
   <ItemGroup>
     <Folder Include="Models\Dto\" />
-    <Folder Include="Models\Entities\" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\PaymentModule.Abstract\PaymentModule.Abstract.csproj" />
+    <ProjectReference Include="..\PaymentModule.DataContext\PaymentModule.DataContext.csproj" />
   </ItemGroup>
 
 </Project>

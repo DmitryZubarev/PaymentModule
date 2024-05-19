@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using PaymentModule.Abstract.BusinessLogic;
+using PaymentModule.Core.Services;
 
 namespace PaymentModule.WebApi.Controllers
 {
@@ -8,11 +9,11 @@ namespace PaymentModule.WebApi.Controllers
     [ApiController]
     public class SharingController : ControllerBase
     {
-        private readonly ISharingSessionService _sharingSessionService;
+        private readonly ISharingSessionService _sessionService;
 
         public SharingController(ISharingSessionService sharingSessionService) 
         {
-            _sharingSessionService = sharingSessionService;
+            _sessionService = sharingSessionService;
         }
 
         //
@@ -51,8 +52,11 @@ namespace PaymentModule.WebApi.Controllers
             int clientId,
             int tariffId,
             int orderNumber,
-            Uri clientReturnUrl)
+            Uri clientReturnUrl,
+            int bindingId)
         {
+            
+            _sessionService.StartAutoPayment(clientId, orderNumber, tariffId, clientReturnUrl, bindingId);
             return Ok();
         }
 
@@ -63,8 +67,9 @@ namespace PaymentModule.WebApi.Controllers
         /// <param name="sessionId"></param>
         /// <returns></returns>
         [HttpPatch("[action]")]
-        public async Task<IActionResult> StopSession(int sessionId)
+        public async Task<IActionResult> StopSession(int orderNumber)
         {
+            _sessionService.EndSession(orderNumber);
             return Ok();
         }
     }

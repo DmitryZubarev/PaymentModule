@@ -20,6 +20,8 @@ namespace PaymentModule.Abstract.BusinessLogic
 
         //Регистрация автоплатежа -> Запрос оплаты -> Получение результата автоплатежа
         //Вернётся статус заказа
-        public bool StartAutoPayment(int clientId, int shopOrderId, int sum, Uri returnShopWindow, int bindingId);
+        public void StartAutoPayment(int clientId, int shopOrderId, int tariffId, Uri returnShopWindow, int bindingId);
+
+        public void EndSession(int shopOrderId);
     }
 }

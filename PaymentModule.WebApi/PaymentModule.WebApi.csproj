@@ -13,8 +13,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PaymentModule.BankClient\PaymentModule.BankClient.csproj" />
     <ProjectReference Include="..\PaymentModule.Core\PaymentModule.Core.csproj" />
     <ProjectReference Include="..\PaymentModule.DataContext\PaymentModule.DataContext.csproj" />
+    <ProjectReference Include="..\PaymentModule.DataWriter\PaymentModule.DataWriter.csproj" />
+    <ProjectReference Include="..\PaymentModule.Reporting\PaymentModule.Reporting.csproj" />
   </ItemGroup>
 
 </Project>
